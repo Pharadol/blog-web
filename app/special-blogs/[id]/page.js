@@ -1,8 +1,7 @@
-import Author from "@/app/components/Author";
 import axios from "axios";
-import Link from "next/link";
 import { getBlogImg } from "@/app/utils/getPopulateUtils";
 import { cookies } from "next/headers";
+import DetailBlog from "@/app/components/DetailBlog";
 
 const fetchBlogDetail = async (id) => {
   try {
@@ -23,13 +22,9 @@ async function Page({ params }) {
   const blog = await fetchBlogDetail(blogId);
 
   return (
-    <div>
-      specia blogs
-      <h1>{blog.attributes.title}</h1>
-      {/* <Author authorData={blog.attributes.author.data} /> */}
-      <img src={getBlogImg(blog)} alt="blog-img" />
-      <p>{blog.attributes.description}</p>
-    </div>
+    <>
+      <DetailBlog blog={blog} />
+    </>
   );
 }
 

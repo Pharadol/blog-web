@@ -15,7 +15,6 @@ const fetchBlogs = async () => {
   }
 };
 
-
 export default async function Home() {
   const blog = await fetchBlogs();
   console.log(blog);
@@ -37,7 +36,7 @@ export default async function Home() {
                   alt="blog-img"
                 />
                 <div className="p-4 pb-8">
-                  <Author authorData={item.attributes.author.data} />
+                  <Author authorData={item.attributes.author.data} createAt={item.attributes.createdAt} card />
                   <h2 className="text-2xl font-semibold">
                     {item.attributes.title}
                   </h2>
