@@ -20,8 +20,6 @@ export async function middleware(request) {
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set("users", JSON.stringify({ email: responseJSON.email })); // headers แนบเป็น sting ได้เท่านั้นเลยต้อง stringigy ก่อน
 
-    console.log("response", responseJSON);
-
     return NextResponse.next({
       request: {
         headers: requestHeaders,

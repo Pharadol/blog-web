@@ -15,7 +15,6 @@ const fetchBlogs = async () => {
 
 export default async function Home() {
   const blog = await fetchBlogs();
-  console.log(blog);
 
   return (
     <div className="max-w-[900px] mx-auto px-3 mb-12">
