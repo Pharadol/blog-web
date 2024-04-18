@@ -1,7 +1,5 @@
 import axios from "axios";
-import Link from "next/link";
-import Author from "./components/Author";
-import { getBlogImg } from "./utils/getPopulateUtils";
+import BlogCard from "./components/BlogCard";
 
 const fetchBlogs = async () => {
   try {
@@ -20,29 +18,12 @@ export default async function Home() {
   console.log(blog);
 
   return (
-    <div className="max-w-[900px] mx-auto px-3">
+    <div className="max-w-[900px] mx-auto px-3 mb-12">
       <h1 className="text-3xl mb-7 mt-5 font-semibold">Blog</h1>
       <div className="flex flex-col gap-y-6">
         {blog.map((item) => {
           return (
-            <article
-              key={item.id}
-              className="bg-white rounded-md shadow-lg hover:scale-105 transition-all duration-300 ease-in-out"
-            >
-              <Link href={`/blog/${item.id}`}>
-                <img
-                  className="rounded-t-md"
-                  src={getBlogImg(item)}
-                  alt="blog-img"
-                />
-                <div className="p-4 pb-8">
-                  <Author authorData={item.attributes.author.data} createAt={item.attributes.createdAt} card />
-                  <h2 className="text-2xl font-semibold">
-                    {item.attributes.title}
-                  </h2>
-                </div>
-              </Link>
-            </article>
+            <BlogCard key={ item.id } blog={item} />
           );
         })}
       </div>

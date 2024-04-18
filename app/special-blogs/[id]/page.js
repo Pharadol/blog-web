@@ -23,7 +23,7 @@ async function Page({ params }) {
 
   return (
     <>
-      <DetailBlog blog={blog} />
+      <DetailBlog blog={blog}  />
     </>
   );
 }
