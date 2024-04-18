@@ -1,10 +1,12 @@
+import Author from "@/app/components/Author";
 import axios from "axios";
 import Link from "next/link";
+import { getBlogImg } from "@/app/utils/getPopulateUtils";
 
 const fetchBlogDetail = async (id) => {
   try {
     const res = await axios.get(
-      `${process.env.STRAPI_BASE_URL}/api/blogs/${id}?populate=*`
+      `${process.env.STRAPI_BASE_URL}/api/blogs/${id}?populate=thumbnail,author.profile`
     );
     return res.data.data;
   } catch (error) {
@@ -19,7 +21,9 @@ async function Page({ params }) {
 
   return (
     <div>
-      <h2>{blog.attributes.title}</h2>
+      <h1>{blog.attributes.title}</h1>
+      <Author authorData={blog.attributes.author.data} />
+      <img src={getBlogImg(blog)} alt="blog-img" />
       <p>{blog.attributes.description}</p>
     </div>
   );

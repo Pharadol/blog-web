@@ -1,6 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import Author from "./components/Author";
+import { getBlogImg } from "./utils/getPopulateUtils";
 
 const fetchBlogs = async () => {
   try {
@@ -22,6 +23,9 @@ export default async function Home() {
   return (
     <div className="max-w-[900px] mx-auto px-3">
       <h1 className="text-3xl mb-12 mt-5 font-semibold">Next Strapi Blog</h1>
+      <button>
+        <Link href='/login'>Login</Link>
+      </button>
 
       <div className="flex flex-col gap-y-6">
         {blog.map((item) => {
@@ -33,8 +37,8 @@ export default async function Home() {
               <Link href={`/blog/${item.id}`}>
                 <img
                   className="rounded-t-md"
-                  src={`${process.env.STRAPI_BASE_URL}${item.attributes.thumbnail.data.attributes.url}`}
-                  alt=""
+                  src={getBlogImg(item)}
+                  alt="blog-img"
                 />
                 <div className="p-4 pb-8">
                   <Author authorData={item.attributes.author.data} />
