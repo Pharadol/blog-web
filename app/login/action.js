@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { cookies } from "next/headers";
+import { redirect } from 'next/navigation'
 
 export async function login(prevState, formData) {
   try {
@@ -15,7 +16,6 @@ export async function login(prevState, formData) {
       }
     );
     cookies().set('token', response.data.jwt)
-    return { message: 'Success login' };
   } catch (error) {
     console.log("error", error.response);
 
@@ -26,4 +26,5 @@ export async function login(prevState, formData) {
     }
     return { message: errorMessage };
   }
+  redirect('/special-blogs')
 }
