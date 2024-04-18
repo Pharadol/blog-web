@@ -20,14 +20,11 @@ const fetchBlogs = async () => {
 
 export default async function Home() {
   const blog = await fetchBlogs();
-  console.log(blog);
+
 
   return (
     <div className="max-w-[900px] mx-auto px-3">
       <h1 className="text-3xl mb-12 mt-5 font-semibold">Special Blog</h1>
-      <button>
-        <Link href="/login">Login</Link>
-      </button>
 
       <div className="flex flex-col gap-y-6">
         {blog.map((item) => {
@@ -36,7 +33,7 @@ export default async function Home() {
               key={item.id}
               className="bg-white rounded-md shadow-lg hover:scale-105 transition-all duration-300 ease-in-out"
             >
-              <Link href={`/blog/${item.id}`}>
+              <Link href={`/special-blogs/${item.id}`}>
                 <img
                   className="rounded-t-md"
                   src={getBlogImg(item)}

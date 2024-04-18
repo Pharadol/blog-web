@@ -22,11 +22,7 @@ export default async function Home() {
 
   return (
     <div className="max-w-[900px] mx-auto px-3">
-      <h1 className="text-3xl mb-12 mt-5 font-semibold">Next Strapi Blog</h1>
-      <button>
-        <Link href='/login'>Login</Link>
-      </button>
-
+      <h1 className="text-3xl mb-7 mt-5 font-semibold">Blog</h1>
       <div className="flex flex-col gap-y-6">
         {blog.map((item) => {
           return (
